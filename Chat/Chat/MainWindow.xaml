@@ -1,0 +1,86 @@
+﻿<Window x:Class="Chat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chat"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="Image">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" Duration="0:0:0.2" To="50" AutoReverse="True" />
+                                <DoubleAnimation Storyboard.TargetProperty="Height" Duration="0:0:0.2" To="50" AutoReverse="True" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        </Window.Resources>
+    <Grid Background="Azure">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="57*"></ColumnDefinition>
+            <ColumnDefinition Width="128*"/>
+            <ColumnDefinition Width="554*"></ColumnDefinition>
+            <ColumnDefinition Width="55*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="10,10,9.8,10" Background="DarkBlue" Grid.ColumnSpan="2">
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="My name:" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0"></TextBlock>
+                <TextBox Width="80" Height="20" Margin="10,0,0,0" Name="NameTextBox" Background="Azure"></TextBox>
+            </StackPanel>
+
+            <TextBlock Text="List:" Margin="10,30,0,0" Foreground="White"></TextBlock>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical" Name="ContactStackPanel" Height="275"  Margin="10">
+
+                </StackPanel>
+            </ScrollViewer>
+
+        </StackPanel>
+        <Grid Grid.Column="2" Margin="0.2,0,0.4,0" AllowDrop="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="CurrentContact" Foreground="White" Background="DarkBlue" Margin="0,10,0,0"></TextBlock>
+           
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Name="ScrollMessage" >
+                <StackPanel  Background="DarkBlue" Name="MessagePanel" Margin="0,10,0,0">
+
+                    <Label Margin="0,10,0,0"></Label>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Background="DarkBlue"  Grid.Row="2" Name="SmileBox" Orientation="Horizontal">
+                <Image  Margin="100,0,0,0" Name="Smile1" Width="40" Height="40" Source=".\\Smiles\1.png" Tag="))"></Image>
+                <Image Margin="10,0,0,0" Name="Smile2" Width="40" Height="40" Source=".\\Smiles\2.png" Tag="))" ></Image>
+                <Image Margin="10,0,0,0" Name="Smile3" Width="40" Height="40" Source=".\\Smiles\3.png" Tag="))" ></Image>
+                <Image Margin="10,0,0,0" Name="Smile4" Width="40" Height="40" Source=".\\Smiles\4.png" Tag="))" ></Image>
+                <Image Margin="10,0,0,0" Name="Smile5" Width="40" Height="40" Source=".\\Smiles\5.png" Tag="))" ></Image>
+                <Image Margin="10,0,0,0" Name="Smile6" Width="40" Height="40" Source=".\\Smiles\6.png" Tag="))" ></Image>
+                <Image Margin="10,0,0,0" Name="Smile7" Width="40" Height="40" Source=".\\Smiles\7.png" Tag="))" ></Image>
+               
+            </StackPanel>
+            <TextBox  AllowDrop="True" Grid.Row="3" Name="MessageBox" Background="Azure" Margin="0,0,0,10"></TextBox>
+
+        </Grid>
+        <DockPanel Grid.Column="2" Grid.ColumnSpan="2" Margin="553,10,10,10" Background="DarkBlue">
+            <Button DockPanel.Dock="Bottom" Height="90" Content="Send" Background="DarkBlue" Foreground="White" Click="Button_Click"></Button>
+            <Button Height="90" Visibility="Collapsed"></Button>
+        </DockPanel>
+
+
+    </Grid>
+</Window>
